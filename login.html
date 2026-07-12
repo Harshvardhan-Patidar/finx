@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Finance Intelligence Archive | Login</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,400..900;1,400..900&amp;family=Hanken+Grotesk:wght@100..900&amp;family=JetBrains+Mono:wght@100..800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "primary-container": "#050505",
+                    "secondary": "#f0c12c",
+                    "surface-variant": "#353535",
+                    "background": "#131313",
+                    "on-secondary-fixed": "#241a00",
+                    "on-background": "#e5e2e1",
+                    "on-tertiary": "#223240",
+                    "error-container": "#93000a",
+                    "primary-fixed": "#e5e2e1",
+                    "surface-dim": "#131313",
+                    "on-secondary": "#3d2e00",
+                    "on-tertiary-fixed-variant": "#394857",
+                    "surface-container-lowest": "#0e0e0e",
+                    "on-secondary-fixed-variant": "#584400",
+                    "secondary-fixed-dim": "#f0c12c",
+                    "on-primary-fixed-variant": "#474646",
+                    "on-tertiary-container": "#697989",
+                    "outline": "#8e9192",
+                    "on-primary": "#313030",
+                    "surface-container": "#20201f",
+                    "on-surface-variant": "#c4c7c7",
+                    "primary-fixed-dim": "#c9c6c5",
+                    "outline-variant": "#444748",
+                    "tertiary-fixed": "#d4e4f6",
+                    "on-secondary-container": "#503d00",
+                    "surface-container-low": "#1c1b1b",
+                    "surface-bright": "#393939",
+                    "inverse-primary": "#5f5e5e",
+                    "tertiary-fixed-dim": "#b8c8da",
+                    "surface-container-high": "#2a2a2a",
+                    "tertiary": "#b8c8da",
+                    "secondary-fixed": "#ffdf90",
+                    "tertiary-container": "#00060e",
+                    "on-primary-fixed": "#1c1b1b",
+                    "secondary-container": "#d2a501",
+                    "on-primary-container": "#797777",
+                    "surface": "#131313",
+                    "on-tertiary-fixed": "#0d1d2a",
+                    "surface-tint": "#c9c6c5",
+                    "inverse-surface": "#e5e2e1",
+                    "on-error": "#690005",
+                    "error": "#ffb4ab",
+                    "inverse-on-surface": "#313030",
+                    "surface-container-highest": "#353535",
+                    "on-surface": "#e5e2e1",
+                    "on-error-container": "#ffdad6",
+                    "primary": "#c9c6c5"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "container-max": "1440px",
+                    "section-gap": "128px",
+                    "unit": "8px",
+                    "margin-mobile": "20px",
+                    "margin-desktop": "64px",
+                    "gutter": "32px"
+            },
+            "fontFamily": {
+                    "headline-md": ["Bodoni Moda"],
+                    "body-lg": ["Hanken Grotesk"],
+                    "display-lg": ["Bodoni Moda"],
+                    "editorial-caps": ["Hanken Grotesk"],
+                    "display-lg-mobile": ["Bodoni Moda"],
+                    "body-md": ["Hanken Grotesk"],
+                    "code-label": ["JetBrains Mono"]
+            },
+            "fontSize": {
+                    "headline-md": ["32px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "display-lg": ["64px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "editorial-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.1em", "fontWeight": "700"}],
+                    "display-lg-mobile": ["40px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "code-label": ["13px", {"lineHeight": "20px", "fontWeight": "500"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #050505;
+            color: #e5e2e1;
+            overflow-x: hidden;
+        }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(32px);
+            border: 0.5px solid rgba(255, 255, 255, 0.1);
+        }
+        .glass-input {
+            background: rgba(255, 255, 255, 0.02);
+            border: none;
+            border-bottom: 1px solid #353535;
+            transition: border-color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .glass-input:focus {
+            outline: none;
+            border-bottom: 1px solid #f0c12c;
+            box-shadow: none;
+        }
+        .saffron-glow:hover {
+            box-shadow: 0 0 20px rgba(244, 196, 48, 0.2);
+        }
+        .editorial-line {
+            height: 1px;
+            background: linear-gradient(90deg, rgba(240, 193, 44, 0.4) 0%, transparent 100%);
+        }
+        .abstract-container {
+            mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col font-body-md">
+<!-- Top Navigation Header -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-margin-mobile md:px-margin-desktop py-8 bg-transparent">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">account_balance</span>
+<span class="font-headline-md text-[20px] md:text-headline-md tracking-tighter text-on-background">FINANCE INTELLIGENCE</span>
+</div>
+<button class="font-editorial-caps text-on-surface-variant hover:text-secondary transition-colors cursor-pointer hidden md:block">
+            CONTACT ADVISOR
+        </button>
+</header>
+<main class="flex-grow flex flex-col md:flex-row min-h-screen">
+<!-- Visual Column (Top on Mobile) -->
+<section class="relative w-full h-[45vh] md:h-screen md:w-[55%] bg-primary-container overflow-hidden abstract-container">
+<img alt="Premium abstract geometric art representing AI data structures" class="absolute inset-0 w-full h-full object-cover opacity-80 mix-blend-screen" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDWXb0C6wlfVoAETxzgE83gcXkDKVChr6J1MyaeX2m5GzoiTbQXxHRzRA3xl9yrtHhnq2Vqdmoh4Ov9vfDiRPtdKASKBgBnfC2pqFh-CQxDnFjGPZSjL6a2XFraMveoOzzQ8eLEjr0HtbJefnflJDSCE7GP2C9pGWTSWcfCcoXj_ytIq9AcWTFztpDzjRywbMOmxWD3BOenh2q2o5zBTJ38BQUUNjhkMupoKOP0Ax2sXaERaFd1iy3YVuYY5sQ53hC3IOB7hSErPE6h"/>
+<!-- Atmospheric overlays -->
+<div class="absolute inset-0 bg-gradient-to-t from-[#050505] via-transparent to-transparent"></div>
+<!-- Editorial Captions -->
+<div class="absolute bottom-12 left-margin-mobile md:left-margin-desktop z-10 max-w-md hidden md:block">
+<div class="editorial-line w-24 mb-4"></div>
+<p class="font-code-label text-secondary text-[10px] tracking-[0.2em] mb-2 uppercase">Core Engine v4.2</p>
+<h2 class="font-display-lg text-headline-md text-on-background leading-none">THE ARCHIVE OF PRECISION</h2>
+</div>
+</section>
+<!-- Form Column (Bottom on Mobile) -->
+<section class="relative w-full flex-grow md:w-[45%] flex flex-col justify-center px-margin-mobile md:px-margin-desktop py-12 md:py-0 bg-[#050505]">
+<div class="max-w-md w-full mx-auto md:mx-0">
+<div class="mb-12">
+<span class="font-editorial-caps text-secondary block mb-4">AUTHENTICATION REQUIRED</span>
+<h1 class="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-[56px] text-on-background leading-tight mb-4">
+                        INTELLIGENCE ARCHIVE
+                    </h1>
+<p class="font-body-lg text-on-surface-variant max-w-sm">
+                        Interrogating GST and Tax Data with AI Precision. Secure access for institutional stakeholders.
+                    </p>
+</div>
+<form class="space-y-8" onsubmit="event.preventDefault()">
+<div class="space-y-6">
+<div class="relative group">
+<label class="font-editorial-caps text-[10px] text-on-surface-variant block mb-1 group-focus-within:text-secondary transition-colors">EMAIL ADDRESS</label>
+<input class="w-full glass-input py-4 text-on-background font-body-md rounded-none placeholder:text-surface-variant" placeholder="archive.access@firm.institutional" type="email"/>
+</div>
+<div class="relative group">
+<div class="flex justify-between items-end mb-1">
+<label class="font-editorial-caps text-[10px] text-on-surface-variant group-focus-within:text-secondary transition-colors">SECURITY PROTOCOL</label>
+<a class="font-editorial-caps text-[10px] text-on-surface-variant hover:text-secondary transition-all" href="#">SECURE RESET</a>
+</div>
+<input class="w-full glass-input py-4 text-on-background font-body-md rounded-none placeholder:text-surface-variant" placeholder="••••••••••••" type="password"/>
+</div>
+</div>
+<div class="flex flex-col gap-6 pt-4">
+<button class="w-full bg-secondary text-primary-container font-editorial-caps py-5 tracking-[0.2em] saffron-glow transition-all active:scale-[0.98] cursor-pointer">
+                            ACCESS ARCHIVE
+                        </button>
+<div class="flex items-center justify-between">
+<label class="flex items-center gap-3 cursor-pointer group">
+<input class="w-4 h-4 bg-transparent border-outline-variant text-secondary focus:ring-0 focus:ring-offset-0 rounded-none" type="checkbox"/>
+<span class="font-editorial-caps text-[10px] text-on-surface-variant group-hover:text-on-background transition-colors">REMEMBER TERMINAL</span>
+</label>
+<a class="font-editorial-caps text-[10px] text-secondary hover:underline underline-offset-4" href="#">INSTITUTIONAL ACCESS</a>
+</div>
+</div>
+</form>
+<div class="mt-16 glass-panel p-6 flex items-start gap-4">
+<span class="material-symbols-outlined text-secondary shrink-0">verified_user</span>
+<div>
+<p class="font-code-label text-[11px] text-on-surface-variant leading-relaxed">
+<span class="text-secondary">SYSTEM STATUS:</span> ARCHIVE IS LIVE. ENCRYPTION PROTOCOL AES-256 ACTIVE. ALL QUERIES ARE AUDITED FOR COMPLIANCE.
+                        </p>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="fixed bottom-0 left-0 w-full z-50 flex flex-row justify-between items-center px-margin-mobile md:px-margin-desktop py-8 md:py-12 bg-transparent pointer-events-none">
+<div class="font-editorial-caps text-[10px] text-on-surface-variant hidden md:block">
+            © 2024 GST INTELLIGENCE ARCHIVE. ALL RIGHTS RESERVED.
+        </div>
+<div class="flex gap-8 pointer-events-auto">
+<a class="font-editorial-caps text-[10px] text-on-surface-variant hover:text-secondary transition-all" href="#">TERMS OF SERVICE</a>
+<a class="font-editorial-caps text-[10px] text-on-surface-variant hover:text-secondary transition-all" href="#">PRIVACY PROTOCOL</a>
+</div>
+</footer>
+<script>
+        // Simple mouse tracking for a subtle spotlight effect on the background
+        document.addEventListener('mousemove', (e) => {
+            const body = document.body;
+            const x = e.clientX / window.innerWidth * 100;
+            const y = e.clientY / window.innerHeight * 100;
+            body.style.backgroundImage = `radial-gradient(circle at ${x}% ${y}%, rgba(244, 196, 48, 0.03) 0%, transparent 40%)`;
+        });
+
+        // Add interaction for the login form
+        const inputs = document.querySelectorAll('input');
+        inputs.forEach(input => {
+            input.addEventListener('focus', () => {
+                input.parentElement.querySelector('label').style.letterSpacing = '0.2em';
+            });
+            input.addEventListener('blur', () => {
+                input.parentElement.querySelector('label').style.letterSpacing = '0.1em';
+            });
+        });
+    </script>
+</body></html>

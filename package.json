@@ -1,0 +1,23 @@
+{
+  "name": "finx",
+  "version": "1.0.0",
+  "private": true,
+  "workspaces": [
+    "frontend",
+    "backend"
+  ],
+  "scripts": {
+    "dev": "concurrently \"npm run dev --workspace=backend\" \"npm run dev --workspace=frontend\"",
+    "build": "npm run build --workspace=backend && npm run build --workspace=frontend",
+    "start": "npm run start --workspace=backend",
+    "install:all": "npm install",
+    "create-index": "npm run create-index --workspace=backend"
+  },
+  "devDependencies": {
+    "@types/node": "^26.1.1",
+    "concurrently": "^8.2.2"
+  },
+  "dependencies": {
+    "dotenv": "^17.4.2"
+  }
+}

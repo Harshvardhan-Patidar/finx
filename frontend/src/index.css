@@ -1,0 +1,132 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    @apply h-full;
+  }
+  body {
+    @apply h-full bg-slate-50 text-slate-800 antialiased;
+  }
+  * {
+    @apply border-slate-200;
+  }
+}
+
+@layer components {
+  /* Scrollbar styling for sidebar and chat */
+  .scrollbar-thin {
+    scrollbar-width: thin;
+    scrollbar-color: theme('colors.slate.600') transparent;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    @apply bg-slate-600 rounded-full;
+  }
+
+  /* Chat scrollbar (lighter, on white bg) */
+  .scrollbar-chat {
+    scrollbar-width: thin;
+    scrollbar-color: theme('colors.slate.300') transparent;
+  }
+
+  .scrollbar-chat::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  .scrollbar-chat::-webkit-scrollbar-thumb {
+    @apply bg-slate-300 rounded-full;
+  }
+
+  /* Markdown content inside AI responses */
+  .markdown-content {
+    @apply text-slate-800 leading-relaxed;
+  }
+
+  .markdown-content h1,
+  .markdown-content h2,
+  .markdown-content h3,
+  .markdown-content h4 {
+    @apply font-semibold text-slate-900 mt-4 mb-2;
+  }
+
+  .markdown-content h1 { @apply text-xl; }
+  .markdown-content h2 { @apply text-lg; }
+  .markdown-content h3 { @apply text-base; }
+
+  .markdown-content p {
+    @apply mb-3 last:mb-0;
+  }
+
+  .markdown-content ul {
+    @apply list-disc pl-5 mb-3 space-y-1;
+  }
+
+  .markdown-content ol {
+    @apply list-decimal pl-5 mb-3 space-y-1;
+  }
+
+  .markdown-content li {
+    @apply text-slate-700;
+  }
+
+  .markdown-content table {
+    @apply w-full border-collapse text-sm mb-3;
+  }
+
+  .markdown-content th {
+    @apply bg-slate-100 border border-slate-200 px-3 py-1.5 text-left font-semibold text-slate-700;
+  }
+
+  .markdown-content td {
+    @apply border border-slate-200 px-3 py-1.5 text-slate-600;
+  }
+
+  .markdown-content tr:nth-child(even) td {
+    @apply bg-slate-50;
+  }
+
+  .markdown-content code:not(pre code) {
+    @apply bg-slate-100 text-primary-700 px-1.5 py-0.5 rounded text-sm font-mono;
+  }
+
+  .markdown-content pre {
+    @apply bg-surface-900 text-slate-200 p-3 rounded-lg overflow-x-auto mb-3;
+  }
+
+  .markdown-content pre code {
+    @apply bg-transparent text-inherit p-0 text-xs;
+  }
+
+  .markdown-content blockquote {
+    @apply border-l-4 border-primary-300 pl-3 italic text-slate-600 mb-3;
+  }
+
+  .markdown-content strong {
+    @apply font-semibold text-slate-900;
+  }
+
+  /* Typing indicator dots */
+  .typing-dot {
+    @apply w-2 h-2 bg-slate-400 rounded-full inline-block mx-0.5;
+    animation: pulseDot 1.4s ease-in-out infinite;
+  }
+
+  .typing-dot:nth-child(2) { animation-delay: 0.2s; }
+  .typing-dot:nth-child(3) { animation-delay: 0.4s; }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
