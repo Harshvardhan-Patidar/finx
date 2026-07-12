@@ -20,7 +20,7 @@ export function ThreeColumnLayout({
   const [rightOpen, setRightOpen] = useState(false);
 
   return (
-    <div className="flex h-screen overflow-hidden bg-slate-50">
+    <div className="flex h-screen overflow-hidden bg-surface-900">
       {/* ── Mobile overlay ─────────────────────────────────────── */}
       {(leftOpen || rightOpen) && (
         <div
@@ -46,7 +46,7 @@ export function ThreeColumnLayout({
         }`}
       >
         <button
-          className="absolute top-4 right-4 text-slate-500 hover:text-slate-500"
+          className="absolute top-4 right-4 text-slate-300 hover:text-slate-300"
           onClick={() => setLeftOpen(false)}
         >
           <X size={20} />
@@ -61,17 +61,17 @@ export function ThreeColumnLayout({
       {/* ── Center Pane (Chat) ─────────────────────────────────── */}
       <main className="flex-1 flex flex-col min-w-0 overflow-hidden">
         {/* Mobile top bar */}
-        <div className="flex items-center justify-between px-4 py-2 bg-white border-b border-slate-200 lg:hidden">
+        <div className="flex items-center justify-between px-4 py-2 bg-surface-800 border-b border-surface-700 lg:hidden">
           <button
             onClick={() => setLeftOpen(true)}
-            className="p-2 rounded-lg text-slate-500 hover:bg-slate-50"
+            className="p-2 rounded-lg text-slate-300 hover:bg-surface-900"
           >
             <Menu size={20} />
           </button>
-          <span className="text-sm font-semibold text-slate-500">FinX</span>
+          <span className="text-sm font-semibold text-slate-300">FinX</span>
           <button
             onClick={() => setRightOpen(true)}
-            className="p-2 rounded-lg text-slate-500 hover:bg-slate-50"
+            className="p-2 rounded-lg text-slate-300 hover:bg-surface-900"
           >
             <FileText size={20} />
           </button>
@@ -85,18 +85,18 @@ export function ThreeColumnLayout({
 
       {/* ── Right Sidebar (Document Vault) ────────────────────── */}
       {/* Desktop: always visible */}
-      <aside className="hidden lg:flex w-72 flex-shrink-0 flex-col bg-white border-l border-slate-200">
+      <aside className="hidden lg:flex w-72 flex-shrink-0 flex-col bg-surface-800 border-l border-surface-700">
         <DocumentVault />
       </aside>
 
       {/* Mobile: drawer from right */}
       <aside
-        className={`fixed inset-y-0 right-0 z-30 w-80 flex flex-col bg-white border-l border-slate-200 transform transition-transform duration-300 ease-in-out lg:hidden ${
+        className={`fixed inset-y-0 right-0 z-30 w-80 flex flex-col bg-surface-800 border-l border-surface-700 transform transition-transform duration-300 ease-in-out lg:hidden ${
           rightOpen ? 'translate-x-0' : 'translate-x-full'
         }`}
       >
         <button
-          className="absolute top-4 left-4 text-slate-500 hover:text-slate-500"
+          className="absolute top-4 left-4 text-slate-300 hover:text-slate-300"
           onClick={() => setRightOpen(false)}
         >
           <X size={20} />

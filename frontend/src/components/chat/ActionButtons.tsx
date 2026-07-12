@@ -35,8 +35,8 @@ export function ActionButtons({ activeAction, onActionSelect, disabled }: Action
             title={btn.description}
             className={`group flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium border transition-all disabled:opacity-40 disabled:cursor-not-allowed ${
               isActive
-                ? 'bg-primary-600 text-white border-primary-600 shadow-sm'
-                : 'bg-white text-slate-500 border-slate-200 hover:border-primary-600 hover:text-primary-600 hover:bg-primary-600'
+                ? 'bg-primary-500 text-surface-900 border-primary-500 shadow-[0_0_10px_rgba(0,240,255,0.3)]'
+                : 'bg-surface-800 text-slate-300 border-surface-700 hover:border-primary-500 hover:text-primary-400 hover:bg-primary-500/10'
             }`}
           >
             <IconComponent size={12} />

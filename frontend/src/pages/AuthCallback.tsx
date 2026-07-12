@@ -101,7 +101,7 @@ export function AuthCallback() {
         <div>
           <p className="text-white font-medium">{message}</p>
           {status === 'error' && (
-            <p className="text-slate-500 text-sm mt-1">Redirecting…</p>
+            <p className="text-slate-300 text-sm mt-1">Redirecting…</p>
           )}
         </div>
       </div>

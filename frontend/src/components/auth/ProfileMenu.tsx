@@ -26,7 +26,7 @@ export function ProfileMenu() {
     <div className="relative" ref={menuRef}>
       <button
         onClick={() => setOpen(!open)}
-        className="flex items-center gap-2 px-3 py-1.5 rounded-lg hover:bg-white/8 transition-colors text-slate-500"
+        className="flex items-center gap-2 px-3 py-1.5 rounded-lg hover:bg-surface-800/8 transition-colors text-slate-300"
       >
         {avatar ? (
           <img src={avatar} alt={name} className="w-6 h-6 rounded-full" />
@@ -42,12 +42,12 @@ export function ProfileMenu() {
       {open && (
         <div className="absolute bottom-full left-0 mb-1 w-48 bg-surface-900 border border-white/10 rounded-xl shadow-xl overflow-hidden z-50">
           <div className="px-3 py-2.5 border-b border-white/8">
-            <p className="text-xs font-semibold text-slate-500 truncate">{name}</p>
-            <p className="text-xs text-slate-500 truncate">{user.email}</p>
+            <p className="text-xs font-semibold text-slate-300 truncate">{name}</p>
+            <p className="text-xs text-slate-300 truncate">{user.email}</p>
           </div>
           <button
             onClick={() => { signOut(); setOpen(false); }}
-            className="w-full flex items-center gap-2 px-3 py-2 text-sm text-slate-500 hover:bg-white/8 hover:text-red-400 transition-colors"
+            className="w-full flex items-center gap-2 px-3 py-2 text-sm text-slate-300 hover:bg-surface-800/8 hover:text-red-400 transition-colors"
           >
             <LogOut size={14} />
             Sign out

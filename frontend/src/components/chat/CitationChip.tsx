@@ -23,7 +23,7 @@ export function CitationChip({ source, index }: CitationChipProps) {
       className={`group inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium border transition-all ${
         driveUrl
           ? 'bg-indigo-50 text-indigo-700 border-indigo-200 hover:bg-indigo-100 hover:border-indigo-300 cursor-pointer'
-          : 'bg-slate-50 text-slate-500 border-slate-200 cursor-default'
+          : 'bg-surface-900 text-slate-300 border-surface-700 cursor-default'
       }`}
     >
       <FileText size={11} className="flex-shrink-0" />

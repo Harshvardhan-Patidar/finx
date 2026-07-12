@@ -21,7 +21,7 @@ function CopyButton({ content }: { content: string }) {
   return (
     <button
       onClick={handleCopy}
-      className="opacity-0 group-hover:opacity-100 p-1 rounded text-slate-500 hover:text-slate-500 hover:bg-slate-50 transition-all"
+      className="opacity-0 group-hover:opacity-100 p-1 rounded text-slate-300 hover:text-slate-300 hover:bg-surface-900 transition-all"
       title="Copy response"
     >
       {copied ? <Check size={13} className="text-emerald-500" /> : <Copy size={13} />}
@@ -60,7 +60,7 @@ export function MessageBubble({ message }: MessageBubbleProps) {
 
         <div className="group flex-1 min-w-0">
           {/* Message card */}
-          <div className="bg-white border border-slate-200 rounded-2xl rounded-tl-sm px-4 py-3 shadow-message">
+          <div className="bg-surface-800 border border-surface-700 rounded-2xl rounded-tl-sm px-4 py-3 shadow-message">
             <div className="markdown-content">
               <ReactMarkdown
                 remarkPlugins={[remarkGfm]}
@@ -103,7 +103,7 @@ export function MessageBubble({ message }: MessageBubbleProps) {
           </div>
 
           {/* Timestamp */}
-          <p className="text-xs text-slate-500 mt-1 ml-1">
+          <p className="text-xs text-slate-300 mt-1 ml-1">
             {new Date(message.created_at).toLocaleTimeString('en-IN', {
               hour: '2-digit',
               minute: '2-digit',
@@ -123,11 +123,10 @@ export function TypingIndicator() {
         <div className="w-7 h-7 rounded-full bg-primary-600 flex items-center justify-center flex-shrink-0 mt-1 shadow-sm">
           <Sparkles size={13} className="text-white" />
         </div>
-        <div className="bg-white border border-slate-200 rounded-2xl rounded-tl-sm px-4 py-3 shadow-message">
-          <div className="flex items-center gap-1 h-5">
-            <span className="typing-dot" />
-            <span className="typing-dot" />
-            <span className="typing-dot" />
+        <div className="bg-surface-800 border border-surface-700 rounded-2xl rounded-tl-sm px-4 py-3 shadow-message">
+          <div className="flex items-center gap-2 h-5">
+            <span className="w-3.5 h-3.5 rounded-full border-2 border-primary-500 border-t-transparent animate-spin" />
+            <span className="text-sm text-primary-400 font-medium animate-pulse">FinX is thinking...</span>
           </div>
         </div>
       </div>

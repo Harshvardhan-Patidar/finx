@@ -69,17 +69,17 @@ export function ChatInput({
       {/* Active action badge */}
       {activeAction && (
         <div className="mb-2 flex items-center gap-1.5 text-xs">
-          <span className="inline-flex items-center gap-1 bg-primary-600 text-primary-600 border border-primary-600 rounded-full px-2 py-0.5 font-medium">
-            <span className="w-1.5 h-1.5 rounded-full bg-primary-600 animate-pulse" />
+          <span className="inline-flex items-center gap-1 bg-primary-500/10 text-primary-400 border border-primary-500/30 rounded-full px-2 py-0.5 font-medium">
+            <span className="w-1.5 h-1.5 rounded-full bg-primary-400 animate-pulse shadow-[0_0_8px_rgba(0,240,255,0.8)]" />
             {ACTION_LABELS[activeAction]} mode active
           </span>
-          <span className="text-slate-500">— click button above to cancel</span>
+          <span className="text-slate-300">— click button above to cancel</span>
         </div>
       )}
 
       {/* Error banner */}
       {error && (
-        <div className="mb-2 flex items-center gap-2 text-xs text-red-600 bg-red-50 border border-red-200 rounded-lg px-3 py-2">
+        <div className="mb-2 flex items-center gap-2 text-xs text-red-400 bg-red-950/50 border border-red-900 rounded-lg px-3 py-2">
           <AlertCircle size={13} />
           {error.message}
         </div>
@@ -87,8 +87,8 @@ export function ChatInput({
 
       {/* Input area */}
       <div
-        className={`flex items-end gap-2 bg-white border rounded-2xl shadow-sm transition-colors ${
-          disabled ? 'border-slate-200 opacity-60' : 'border-slate-200 focus-within:border-primary-600 focus-within:shadow-md'
+        className={`flex items-end gap-2 bg-surface-900 border rounded-2xl shadow-sm transition-all ${
+            disabled ? 'border-surface-700 opacity-60' : 'border-surface-700 focus-within:border-primary-500 focus-within:shadow-[0_0_20px_rgba(0,240,255,0.1)]'
         }`}
       >
         <textarea
@@ -99,13 +99,13 @@ export function ChatInput({
           disabled={loading || disabled}
           placeholder={effectivePlaceholder}
           rows={1}
-          className="flex-1 resize-none bg-transparent px-4 py-3 text-sm text-slate-500 placeholder:text-slate-500 focus:outline-none disabled:cursor-not-allowed leading-relaxed"
+          className="flex-1 resize-none bg-transparent px-4 py-3 text-sm text-white placeholder:text-slate-500 focus:outline-none disabled:cursor-not-allowed leading-relaxed"
           style={{ maxHeight: '200px', overflowY: 'auto' }}
         />
         <button
           onClick={handleSubmit}
           disabled={!value.trim() || loading || disabled}
-          className="m-2 w-9 h-9 rounded-xl bg-primary-600 hover:bg-primary-600 text-white flex items-center justify-center flex-shrink-0 transition-colors disabled:opacity-40 disabled:cursor-not-allowed shadow-sm"
+          className="m-2 w-9 h-9 rounded-xl bg-primary-500 hover:bg-primary-400 text-surface-900 flex items-center justify-center flex-shrink-0 transition-all disabled:opacity-40 disabled:cursor-not-allowed shadow-[0_0_15px_rgba(0,240,255,0.3)] hover:shadow-[0_0_25px_rgba(0,240,255,0.5)]"
           title="Send message (Enter)"
         >
           {loading ? (
@@ -116,7 +116,7 @@ export function ChatInput({
         </button>
       </div>
 
-      <p className="mt-1.5 text-center text-xs text-slate-500">
+      <p className="mt-1.5 text-center text-xs text-slate-300">
         FinX answers only from your uploaded documents ·{' '}
         <span className="font-medium">Enter</span> to send, <span className="font-medium">Shift+Enter</span> for newline
       </p>

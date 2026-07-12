@@ -53,7 +53,7 @@ export function LoginPage() {
             Your AI-powered financial advisor — built on{' '}
             <span className="text-primary-600">your documents</span>
           </h1>
-          <p className="text-slate-500 text-lg leading-relaxed">
+          <p className="text-slate-300 text-lg leading-relaxed">
             Upload your GST returns, invoices, and financial statements. FinX reads them and
             answers every question with exact citations.
           </p>
@@ -61,13 +61,13 @@ export function LoginPage() {
 
         <div className="grid grid-cols-1 gap-4">
           {FEATURES.map(({ icon: Icon, title, desc }) => (
-            <div key={title} className="flex items-start gap-3 p-3 rounded-xl bg-white/4 border border-white/6">
+            <div key={title} className="flex items-start gap-3 p-3 rounded-xl bg-surface-800/4 border border-white/6">
               <div className="w-8 h-8 rounded-lg bg-primary-600/60 flex items-center justify-center flex-shrink-0 mt-0.5">
                 <Icon size={15} className="text-primary-600" />
               </div>
               <div>
-                <p className="text-sm font-semibold text-slate-500 mb-0.5">{title}</p>
-                <p className="text-xs text-slate-500 leading-relaxed">{desc}</p>
+                <p className="text-sm font-semibold text-slate-300 mb-0.5">{title}</p>
+                <p className="text-xs text-slate-300 leading-relaxed">{desc}</p>
               </div>
             </div>
           ))}
@@ -87,7 +87,7 @@ export function LoginPage() {
 
           <div className="bg-surface-900/80 backdrop-blur-sm border border-white/8 rounded-2xl p-8 shadow-2xl">
             <h2 className="text-2xl font-bold text-white mb-1">Welcome back</h2>
-            <p className="text-slate-500 text-sm mb-8">
+            <p className="text-slate-300 text-sm mb-8">
               Sign in to access your financial AI workspace
             </p>
 
@@ -100,10 +100,10 @@ export function LoginPage() {
             <button
               onClick={signInWithGoogle}
               disabled={loading}
-              className="w-full flex items-center justify-center gap-3 bg-white hover:bg-gray-50 text-slate-500 font-semibold py-3 px-4 rounded-xl transition-all shadow-sm hover:shadow-md disabled:opacity-60 disabled:cursor-not-allowed"
+              className="w-full flex items-center justify-center gap-3 bg-surface-800 hover:bg-surface-700 text-slate-300 font-semibold py-3 px-4 rounded-xl transition-all shadow-sm hover:shadow-md disabled:opacity-60 disabled:cursor-not-allowed"
             >
               {loading ? (
-                <div className="w-5 h-5 border-2 border-slate-200 border-t-neutral rounded-full animate-spin" />
+                <div className="w-5 h-5 border-2 border-surface-700 border-t-neutral rounded-full animate-spin" />
               ) : (
                 <svg viewBox="0 0 24 24" className="w-5 h-5" aria-hidden="true">
                   <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4" />
@@ -115,15 +115,15 @@ export function LoginPage() {
               Continue with Google
             </button>
 
-            <p className="mt-6 text-center text-xs text-slate-500 leading-relaxed">
+            <p className="mt-6 text-center text-xs text-slate-300 leading-relaxed">
               By signing in, you agree to our Terms of Service. Your documents are{' '}
-              <span className="text-slate-500">never shared</span> with other users.
+              <span className="text-slate-300">never shared</span> with other users.
             </p>
           </div>
 
-          <p className="mt-6 text-center text-xs text-slate-500">
+          <p className="mt-6 text-center text-xs text-slate-300">
             Built for Indian businesses ·{' '}
-            <span className="text-slate-500">GST · ITR · RTI · Legal</span>
+            <span className="text-slate-300">GST · ITR · RTI · Legal</span>
           </p>
         </div>
       </div>

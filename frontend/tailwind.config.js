@@ -8,24 +8,25 @@ export default {
         mono: ['JetBrains Mono', 'Fira Code', 'monospace'],
       },
       colors: {
-        // Brand primary — indigo
+        // Brand primary — cyan (#00f0ff)
         primary: {
-          50: '#eef2ff',
-          100: '#e0e7ff',
-          200: '#c7d2fe',
-          300: '#a5b4fc',
-          400: '#818cf8',
-          500: '#6366f1',
-          600: '#4f46e5',
-          700: '#4338ca',
-          800: '#3730a3',
-          900: '#312e81',
+          50: '#e0feff',
+          100: '#b3fdff',
+          200: '#80fcff',
+          300: '#4dfbff',
+          400: '#1afaff',
+          500: '#00f0ff',
+          600: '#00c0cc',
+          700: '#009099',
+          800: '#006066',
+          900: '#003033',
         },
         // Dark sidebar surface
         surface: {
-          800: '#1e2433',
-          900: '#141824',
-          950: '#0a0f1e',
+          700: '#1a1a1a',
+          800: '#0a0a0a',
+          900: '#050505',
+          950: '#000000',
         },
       },
       boxShadow: {
