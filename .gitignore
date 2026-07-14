@@ -12,7 +12,7 @@ build/
 .env
 .env.local
 .env.*.local
-!.env.example
+.env.example
 
 # Logs
 logs/
@@ -26,6 +26,8 @@ npm-debug.log*
 
 # Test coverage
 coverage/
+docs/
+supabase/
 
 # Temporary files
 *.tmp
