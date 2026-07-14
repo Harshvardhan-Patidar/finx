@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import {
   FileText,
   Upload,
@@ -14,6 +14,7 @@ import {
 import { useDocuments, useDriveStatus } from '../../hooks/useDocuments';
 import { api } from '../../lib/api';
 import type { Document } from '@shared/types';
+
 
 const STATUS_CONFIG = {
   complete: {
@@ -52,12 +53,30 @@ function formatFileSize(doc: Document): string {
 }
 
 export function DocumentVault() {
-  const { documents, loading, uploading, upload, deleteDocument } = useDocuments();
+  const { documents, loading, uploading, upload, deleteDocument, refetch } = useDocuments();
   const { data: driveStatus } = useDriveStatus();
   const fileInputRef = useRef<HTMLInputElement>(null);
   const [deletingId, setDeletingId] = useState<string | null>(null);
   const [uploadError, setUploadError] = useState<string | null>(null);
   const [connectingDrive, setConnectingDrive] = useState(false);
+
+// Add inside DocumentVault component, after the existing hooks:
+useEffect(() => {
+  const params = new URLSearchParams(window.location.search);
+  if (params.get('drive_connected') === 'true') {
+    // Show success — you can replace this with a proper toast library
+    alert('✅ Google Drive connected successfully!');
+    // Clean the URL so it doesn't show again on refresh
+    window.history.replaceState({}, '', window.location.pathname);
+    // Refetch documents
+    refetch();
+  }
+  const driveError = params.get('drive_error');
+  if (driveError) {
+    alert(`❌ Drive connection failed: ${driveError}`);
+    window.history.replaceState({}, '', window.location.pathname);
+  }
+}, []);
 
   const handleFileSelect = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const files = Array.from(e.target.files ?? []);

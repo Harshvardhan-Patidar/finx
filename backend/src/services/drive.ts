@@ -158,11 +158,12 @@ async function ensureFinXFolder(drive: ReturnType<typeof google.drive>): Promise
 /**
  * Generate Google OAuth2 URL for Drive access consent.
  */
-export function generateAuthUrl(): string {
+export function generateAuthUrl(userId: string): string {
   const oauth2Client = createOAuth2Client();
   return oauth2Client.generateAuthUrl({
     access_type: 'offline',
-    prompt: 'consent', // Force refresh token on every connect
+    prompt: 'consent',
+    state: generateOAuthState(userId),   // ← embeds signed userId
     scope: [
       'https://www.googleapis.com/auth/drive.readonly',
       'https://www.googleapis.com/auth/drive.file',
@@ -186,4 +187,54 @@ export async function exchangeCodeForTokens(
 
   const encrypted = encryptToken(tokens.refresh_token);
   await saveRefreshToken(userId, encrypted);
+}
+
+
+/**
+ * Generate a signed, time-limited state token for CSRF protection.
+ * Encodes userId + timestamp + HMAC so the callback can verify it
+ * without storing anything server-side.
+ */
+export function generateOAuthState(userId: string): string {
+  const ts = Date.now().toString();
+  const payload = `${userId}:${ts}`;
+  const hmac = crypto
+    .createHmac('sha256', getEncryptionKey())
+    .update(payload)
+    .digest('hex');
+  return Buffer.from(`${payload}:${hmac}`).toString('base64url');
+}
+
+/**
+ * Verify a state token from a Google OAuth callback.
+ * Returns the userId if valid, null if tampered or expired (> 10 min).
+ */
+export function verifyOAuthState(state: string): string | null {
+  try {
+    const decoded = Buffer.from(state, 'base64url').toString('utf8');
+    const parts = decoded.split(':');
+    if (parts.length !== 3) return null;
+
+    const [userId, ts, receivedHmac] = parts;
+    const expectedHmac = crypto
+      .createHmac('sha256', getEncryptionKey())
+      .update(`${userId}:${ts}`)
+      .digest('hex');
+
+    const hmacBuf = Buffer.from(receivedHmac);
+    const expectedBuf = Buffer.from(expectedHmac);
+    if (
+      hmacBuf.length !== expectedBuf.length ||
+      !crypto.timingSafeEqual(hmacBuf, expectedBuf)
+    ) {
+      return null;
+    }
+
+    // Reject states older than 10 minutes
+    if (Date.now() - parseInt(ts, 10) > 10 * 60 * 1000) return null;
+
+    return userId;
+  } catch {
+    return null;
+  }
 }
