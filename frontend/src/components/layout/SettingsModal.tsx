@@ -145,68 +145,90 @@ export function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6">
+    <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-center sm:p-4 md:p-6">
       {/* Backdrop */}
-      <div 
-        className="absolute inset-0 bg-slate-900/40 backdrop-blur-sm transition-opacity" 
-        onClick={onClose} 
+      <div
+        className="absolute inset-0 bg-black/60 backdrop-blur-sm transition-opacity"
+        onClick={onClose}
       />
 
-      {/* Modal */}
-      <div className="relative w-full max-w-2xl bg-surface-800 rounded-2xl shadow-xl border border-surface-700 overflow-hidden flex flex-col md:flex-row h-[600px] max-h-[85vh] animate-in fade-in zoom-in-95 duration-200">
-        
-        {/* Sidebar */}
-        <div className="w-full md:w-64 bg-surface-900 border-r border-surface-700 p-4 flex flex-col">
+      {/* Modal — bottom sheet on mobile, centered dialog on desktop */}
+      <div className="relative w-full sm:max-w-2xl bg-surface-800 sm:rounded-2xl rounded-t-2xl shadow-2xl border border-surface-700/80 overflow-hidden flex flex-col md:flex-row max-h-[92vh] sm:h-[600px] sm:max-h-[85vh]">
+
+        {/* ── Mobile: horizontal tab bar at top ─────────────────── */}
+        <div className="md:hidden bg-surface-900 border-b border-surface-700">
+          {/* Header row */}
+          <div className="flex items-center justify-between px-4 pt-4 pb-3">
+            {/* Drag handle (visual only) */}
+            <div className="absolute top-2 left-1/2 -translate-x-1/2 w-10 h-1 rounded-full bg-surface-700" />
+            <h2 className="text-base font-bold text-white">Settings</h2>
+            <button
+              onClick={onClose}
+              className="p-1.5 text-slate-400 hover:text-white hover:bg-surface-800 rounded-lg transition-colors active:scale-95"
+            >
+              <X size={18} />
+            </button>
+          </div>
+          {/* Tab strip */}
+          <div className="flex border-t border-surface-700/50">
+            {([
+              { id: 'profile' as Tab, label: 'Profile', icon: User },
+              { id: 'integrations' as Tab, label: 'Integrations', icon: Link2 },
+              { id: 'appearance' as Tab, label: 'Appearance', icon: Palette },
+            ]).map(({ id, label, icon: Icon }) => (
+              <button
+                key={id}
+                onClick={() => setActiveTab(id)}
+                className={`flex-1 flex flex-col items-center gap-1 py-2.5 text-xs font-medium transition-colors border-b-2 ${
+                  activeTab === id
+                    ? 'border-primary-500 text-primary-400'
+                    : 'border-transparent text-slate-400 hover:text-slate-200'
+                }`}
+              >
+                <Icon size={16} />
+                {label}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        {/* ── Desktop: vertical sidebar ──────────────────────────── */}
+        <div className="hidden md:flex w-64 bg-surface-900 border-r border-surface-700 p-4 flex-col">
           <h2 className="text-xl font-bold text-white mb-6 px-2">Settings</h2>
-          
           <nav className="space-y-1 flex-1">
-            <button
-              onClick={() => setActiveTab('profile')}
-              className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors ${
-                activeTab === 'profile'
-                  ? 'bg-primary-500/10 text-primary-400'
-                  : 'text-slate-300 hover:bg-surface-800 hover:text-white'
-              }`}
-            >
-              <User size={18} />
-              Profile
-            </button>
-            <button
-              onClick={() => setActiveTab('integrations')}
-              className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors ${
-                activeTab === 'integrations'
-                  ? 'bg-primary-500/10 text-primary-400'
-                  : 'text-slate-300 hover:bg-surface-800 hover:text-white'
-              }`}
-            >
-              <Link2 size={18} />
-              Integrations
-            </button>
-            <button
-              onClick={() => setActiveTab('appearance')}
-              className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors ${
-                activeTab === 'appearance'
-                  ? 'bg-primary-500/10 text-primary-400'
-                  : 'text-slate-300 hover:bg-surface-800 hover:text-white'
-              }`}
-            >
-              <Palette size={18} />
-              Appearance
-            </button>
+            {([
+              { id: 'profile' as Tab, label: 'Profile', icon: User },
+              { id: 'integrations' as Tab, label: 'Integrations', icon: Link2 },
+              { id: 'appearance' as Tab, label: 'Appearance', icon: Palette },
+            ]).map(({ id, label, icon: Icon }) => (
+              <button
+                key={id}
+                onClick={() => setActiveTab(id)}
+                className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors ${
+                  activeTab === id
+                    ? 'bg-primary-500/10 text-primary-400'
+                    : 'text-slate-300 hover:bg-surface-800 hover:text-white'
+                }`}
+              >
+                <Icon size={18} />
+                {label}
+              </button>
+            ))}
           </nav>
         </div>
 
         {/* Content Area */}
-        <div className="flex-1 flex flex-col min-w-0 bg-surface-800">
-          <div className="flex justify-end p-4 pb-0">
+        <div className="flex-1 flex flex-col min-w-0 bg-surface-800 overflow-hidden">
+          {/* Desktop close button */}
+          <div className="hidden md:flex justify-end p-4 pb-0">
             <button
               onClick={onClose}
-              className="p-2 text-slate-300 hover:text-slate-300 hover:bg-surface-800 rounded-lg transition-colors"
+              className="p-2 text-slate-400 hover:text-white hover:bg-surface-700 rounded-lg transition-colors"
             >
               <X size={20} />
             </button>
           </div>
-          <div className="flex-1 p-6 md:px-10 overflow-y-auto">
+          <div className="flex-1 px-4 sm:px-6 md:px-10 py-5 overflow-y-auto">
             {renderTabContent()}
           </div>
         </div>

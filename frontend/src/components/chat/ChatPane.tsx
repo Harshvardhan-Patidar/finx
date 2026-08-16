@@ -14,19 +14,19 @@ interface ChatPaneProps {
 
 function EmptyState() {
   return (
-    <div className="flex-1 flex flex-col items-center justify-center px-6 py-12 text-center">
-      <div className="w-14 h-14 rounded-2xl bg-primary-500 flex items-center justify-center shadow-[0_0_30px_rgba(0,240,255,0.4)] mb-5">
-        <Sparkles size={24} className="text-surface-900" />
+    <div className="flex-1 flex flex-col items-center justify-center px-4 sm:px-6 py-10 text-center">
+      <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-primary-500 flex items-center justify-center shadow-[0_0_30px_rgba(0,240,255,0.4)] mb-4">
+        <Sparkles size={20} className="text-surface-900 sm:hidden" />
+        <Sparkles size={24} className="text-surface-900 hidden sm:block" />
       </div>
-      <h2 className="text-xl font-bold text-slate-300 mb-2">
-        Ask FinX anything about your finances
+      <h2 className="text-lg sm:text-xl font-bold text-slate-300 mb-2">
+        Ask FinX about your finances
       </h2>
-      <p className="text-slate-300 text-sm max-w-md leading-relaxed mb-6">
-        Upload your GST returns, invoices, or financial statements first, then ask questions
-        and get answers with exact citations from your documents.
+      <p className="text-slate-400 text-sm max-w-xs sm:max-w-md leading-relaxed mb-5">
+        Upload your GST returns, invoices, or financial statements — then ask questions with exact citations.
       </p>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 w-full max-w-lg">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 w-full max-w-sm sm:max-w-lg">
         {[
           { q: 'What was my total GST liability in Q1 FY2024?', icon: '🧾' },
           { q: 'List all eligible deductions under Section 80C', icon: '💰' },
@@ -35,17 +35,17 @@ function EmptyState() {
         ].map(({ q, icon }) => (
           <div
             key={q}
-            className="flex items-start gap-2 p-3 rounded-xl bg-surface-800 border border-surface-700 text-left hover:border-primary-500 hover:shadow-[0_0_15px_rgba(0,240,255,0.15)] cursor-default transition-all"
+            className="flex items-start gap-2.5 p-3 rounded-xl bg-surface-800 border border-surface-700 text-left hover:border-primary-500/50 hover:shadow-[0_0_15px_rgba(0,240,255,0.1)] cursor-default transition-all"
           >
-            <span className="text-lg leading-none mt-0.5 flex-shrink-0">{icon}</span>
+            <span className="text-base leading-none mt-0.5 flex-shrink-0">{icon}</span>
             <p className="text-xs text-slate-300 leading-relaxed">{q}</p>
           </div>
         ))}
       </div>
 
-      <div className="flex items-center gap-2 mt-6 text-xs text-slate-300">
-        <MessageSquare size={13} />
-        <span>Select an action button or type your own question below</span>
+      <div className="flex items-center gap-2 mt-5 text-xs text-slate-500">
+        <MessageSquare size={12} />
+        <span>Tap an action below or type your own question</span>
       </div>
     </div>
   );
@@ -89,7 +89,7 @@ export function ChatPane({ chatId, onNewChatCreated }: ChatPaneProps) {
       {/* ── Messages area ─────────────────────────────────────── */}
       <div
         ref={scrollRef}
-        className="flex-1 overflow-y-auto scrollbar-chat py-4 space-y-4"
+        className="flex-1 overflow-y-auto scrollbar-chat py-3 sm:py-4 space-y-3 sm:space-y-4"
       >
         {showEmpty ? (
           <EmptyState />
@@ -108,7 +108,7 @@ export function ChatPane({ chatId, onNewChatCreated }: ChatPaneProps) {
         )}
       </div>
 
-      {/* ── Action buttons ─────────────────────────────────────── */}
+      {/* ── Action buttons + Input ─────────────────────────────── */}
       <div className="border-t border-surface-700 bg-surface-800">
         <ActionButtons
           activeAction={activeAction}

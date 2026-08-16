@@ -32,7 +32,7 @@ export function ChatInput({
     const ta = textareaRef.current;
     if (!ta) return;
     ta.style.height = 'auto';
-    ta.style.height = `${Math.min(ta.scrollHeight, 200)}px`;
+    ta.style.height = `${Math.min(ta.scrollHeight, 160)}px`;
   }, []);
 
   const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
@@ -61,25 +61,25 @@ export function ChatInput({
   const effectivePlaceholder =
     placeholder ??
     (activeAction
-      ? `Ask about ${ACTION_LABELS[activeAction]}… (based on your documents)`
+      ? `Ask about ${ACTION_LABELS[activeAction]}…`
       : 'Ask FinX about your financial documents…');
 
   return (
-    <div className="px-4 pb-4 pt-2">
+    <div className="px-3 sm:px-4 pb-3 sm:pb-4 pt-2">
       {/* Active action badge */}
       {activeAction && (
         <div className="mb-2 flex items-center gap-1.5 text-xs">
           <span className="inline-flex items-center gap-1 bg-primary-500/10 text-primary-400 border border-primary-500/30 rounded-full px-2 py-0.5 font-medium">
             <span className="w-1.5 h-1.5 rounded-full bg-primary-400 animate-pulse shadow-[0_0_8px_rgba(0,240,255,0.8)]" />
-            {ACTION_LABELS[activeAction]} mode active
+            {ACTION_LABELS[activeAction]} active
           </span>
-          <span className="text-slate-300">— click button above to cancel</span>
+          <span className="text-slate-500 hidden sm:inline">— click button above to cancel</span>
         </div>
       )}
 
       {/* Error banner */}
       {error && (
-        <div className="mb-2 flex items-center gap-2 text-xs text-red-400 bg-red-950/50 border border-red-900 rounded-lg px-3 py-2">
+        <div className="mb-2 flex items-center gap-2 text-xs text-red-400 bg-red-950/50 border border-red-900 rounded-xl px-3 py-2">
           <AlertCircle size={13} />
           {error.message}
         </div>
@@ -99,14 +99,14 @@ export function ChatInput({
           disabled={loading || disabled}
           placeholder={effectivePlaceholder}
           rows={1}
-          className="flex-1 resize-none bg-transparent px-4 py-3 text-sm text-white placeholder:text-slate-500 focus:outline-none disabled:cursor-not-allowed leading-relaxed"
-          style={{ maxHeight: '200px', overflowY: 'auto' }}
+          className="flex-1 resize-none bg-transparent px-3 sm:px-4 py-3 text-sm text-white placeholder:text-slate-500 focus:outline-none disabled:cursor-not-allowed leading-relaxed"
+          style={{ maxHeight: '160px', overflowY: 'auto' }}
         />
         <button
           onClick={handleSubmit}
           disabled={!value.trim() || loading || disabled}
-          className="m-2 w-9 h-9 rounded-xl bg-primary-500 hover:bg-primary-400 text-surface-900 flex items-center justify-center flex-shrink-0 transition-all disabled:opacity-40 disabled:cursor-not-allowed shadow-[0_0_15px_rgba(0,240,255,0.3)] hover:shadow-[0_0_25px_rgba(0,240,255,0.5)]"
-          title="Send message (Enter)"
+          className="m-2 w-9 h-9 rounded-xl bg-primary-500 hover:bg-primary-400 text-surface-900 flex items-center justify-center flex-shrink-0 transition-all disabled:opacity-40 disabled:cursor-not-allowed shadow-[0_0_15px_rgba(0,240,255,0.3)] hover:shadow-[0_0_25px_rgba(0,240,255,0.5)] active:scale-95"
+          title="Send message"
         >
           {loading ? (
             <Loader2 size={16} className="animate-spin" />
@@ -116,9 +116,13 @@ export function ChatInput({
         </button>
       </div>
 
-      <p className="mt-1.5 text-center text-xs text-slate-300">
-        FinX answers only from your uploaded documents ·{' '}
-        <span className="font-medium">Enter</span> to send, <span className="font-medium">Shift+Enter</span> for newline
+      {/* Footer hint — mobile shows simpler text */}
+      <p className="mt-1.5 text-center text-[11px] text-slate-600">
+        <span className="sm:hidden">Answers grounded in your documents</span>
+        <span className="hidden sm:inline">
+          FinX answers only from your uploaded documents · <span className="font-medium">Enter</span> to send,{' '}
+          <span className="font-medium">Shift+Enter</span> for newline
+        </span>
       </p>
     </div>
   );

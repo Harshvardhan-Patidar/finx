@@ -6,9 +6,14 @@
 @layer base {
   html {
     @apply h-full;
+    /* Smooth scroll for mobile */
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
   }
   body {
     @apply h-full bg-surface-900 text-white antialiased;
+    /* Safe area support for notched phones */
+    padding-bottom: env(safe-area-inset-bottom);
   }
   * {
     @apply border-surface-800;
@@ -129,5 +134,14 @@
 @layer utilities {
   .text-balance {
     text-wrap: balance;
+  }
+
+  /* Hide scrollbar (used for horizontal pill strips on mobile) */
+  .scrollbar-none {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  .scrollbar-none::-webkit-scrollbar {
+    display: none;
   }
 }

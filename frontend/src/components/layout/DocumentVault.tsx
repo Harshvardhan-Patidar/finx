@@ -121,8 +121,8 @@ useEffect(() => {
 
   return (
     <div className="flex flex-col h-full">
-      {/* ── Header ─────────────────────────────────────────────── */}
-      <div className="px-4 py-4 border-b border-surface-700">
+      {/* ── Header — only shown on desktop (mobile has its own drawer header) ── */}
+      <div className="hidden lg:block px-4 py-4 border-b border-surface-700">
         <div className="flex items-center justify-between mb-1">
           <h2 className="text-sm font-semibold text-slate-300">Document Vault</h2>
           {totalCount > 0 && (
@@ -134,6 +134,15 @@ useEffect(() => {
         <p className="text-xs text-slate-300">
           Documents indexed and available for AI queries
         </p>
+      </div>
+
+      {/* ── Mobile sub-header (inside drawer, after drawer title) ── */}
+      <div className="lg:hidden px-4 py-2 border-b border-surface-700">
+        {totalCount > 0 ? (
+          <span className="text-xs text-slate-400">{indexedCount}/{totalCount} indexed</span>
+        ) : (
+          <span className="text-xs text-slate-500">Upload docs for AI queries</span>
+        )}
       </div>
 
       {/* ── Upload Button ──────────────────────────────────────── */}
@@ -255,7 +264,7 @@ useEffect(() => {
                   <button
                     onClick={() => handleDelete(doc.id)}
                     disabled={deletingId === doc.id}
-                    className="opacity-0 group-hover:opacity-100 p-1 rounded hover:bg-red-950/50 text-slate-400 hover:text-red-400 transition-all flex-shrink-0"
+                    className="sm:opacity-0 sm:group-hover:opacity-100 p-1.5 rounded-lg hover:bg-red-950/50 text-slate-500 hover:text-red-400 transition-all flex-shrink-0 active:scale-95"
                     title="Delete document"
                   >
                     {deletingId === doc.id ? (

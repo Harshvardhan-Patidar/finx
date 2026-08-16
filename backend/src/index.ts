@@ -2,6 +2,8 @@ import dotenv from 'dotenv';
 import path from 'path';
 dotenv.config();
 dotenv.config({ path: path.resolve(__dirname, '../../.env') });
+import cron from 'node-cron';
+import { getSupabaseAdmin } from './services/supabase';
 import ws from 'ws';
 if (typeof globalThis.WebSocket === 'undefined') {
   globalThis.WebSocket = ws as any;
@@ -60,6 +62,22 @@ app.listen(PORT, () => {
   console.log(`\n🚀 FinX API running on http://localhost:${PORT}`);
   console.log(`   Environment : ${process.env.NODE_ENV || 'development'}`);
   console.log(`   CORS origin : ${process.env.FRONTEND_URL || 'http://localhost:5173'}\n`);
+});
+
+// ── DB Keepalive Cron ─────────────────────────────────────────
+cron.schedule('0 0 */4 * *', async () => {
+  console.log(`[cron] Running DB keepalive at ${new Date().toISOString()}`);
+  try {
+    const db = getSupabaseAdmin();
+    const { error } = await db.from('profiles').select('id').limit(1);
+    if (error) {
+      console.error('[cron] ❌ DB keepalive failed:', error.message);
+    } else {
+      console.log('[cron] ✅ DB keepalive successful — Supabase project stays active');
+    }
+  } catch (err) {
+    console.error('[cron] ❌ DB keepalive error:', err instanceof Error ? err.message : err);
+  }
 });
 
 export default app;

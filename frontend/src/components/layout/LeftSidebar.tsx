@@ -115,9 +115,9 @@ export function LeftSidebar({ activeChatId, onChatSelect, onNewChat }: LeftSideb
                   <button
                     onClick={(e) => handleDelete(e, chat.id)}
                     disabled={deletingId === chat.id}
-                    className="opacity-0 group-hover:opacity-100 p-1 rounded hover:bg-surface-800/10 text-slate-300 hover:text-red-400 transition-all"
+                    className="sm:opacity-0 sm:group-hover:opacity-100 p-1.5 rounded-lg hover:bg-surface-800 text-slate-500 hover:text-red-400 transition-all active:scale-95"
                   >
-                    <Trash2 size={12} />
+                    <Trash2 size={13} />
                   </button>
                 </button>
               ))}

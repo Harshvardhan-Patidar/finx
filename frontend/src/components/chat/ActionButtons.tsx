@@ -22,7 +22,7 @@ export function ActionButtons({ activeAction, onActionSelect, disabled }: Action
   };
 
   return (
-    <div className="flex flex-wrap gap-2 px-4 py-2">
+    <div className="flex gap-2 px-3 sm:px-4 py-2 overflow-x-auto scrollbar-none">
       {ACTION_BUTTONS.map((btn) => {
         const IconComponent = ICONS[btn.icon as keyof typeof ICONS] ?? FileText;
         const isActive = activeAction === btn.id;
@@ -33,7 +33,7 @@ export function ActionButtons({ activeAction, onActionSelect, disabled }: Action
             onClick={() => handleClick(btn)}
             disabled={disabled}
             title={btn.description}
-            className={`group flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium border transition-all disabled:opacity-40 disabled:cursor-not-allowed ${
+            className={`group flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium border transition-all disabled:opacity-40 disabled:cursor-not-allowed flex-shrink-0 active:scale-95 ${
               isActive
                 ? 'bg-primary-500 text-surface-900 border-primary-500 shadow-[0_0_10px_rgba(0,240,255,0.3)]'
                 : 'bg-surface-800 text-slate-300 border-surface-700 hover:border-primary-500 hover:text-primary-400 hover:bg-primary-500/10'
